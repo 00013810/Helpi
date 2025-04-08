@@ -1,0 +1,35 @@
+Name	Price	PriceUSD	DiscountAmount	Qty	Category	Size	OfficeName	LastCheckedDate
+Штаны	550000	41.98		1	Штаны	2XL	Capsula Store Максим Горький	2025-02-16
+Штаны	550000	41.98			Штаны	2XL	Capsula Store Мукими	2025-02-16
+NB 1000	730000	55.73		1	Кроссовки	39	Capsula Store Максим Горький	2025-02-16
+NB 1000	730000	55.73			Кроссовки	39	Capsula Store Мукими	2025-02-16
+JORDAN 1 x TRAVIS	670000	51.15		2	Кроссовки	45	Capsula Store Максим Горький	2025-02-16
+JORDAN 1 x TRAVIS	670000	51.15		2	Кроссовки	45	Capsula Store Мукими	2025-02-16
+Лонгслив	590000	45.04		2	Лонгсливы	S	Capsula Store Максим Горький	2025-02-16
+Лонгслив	590000	45.04			Лонгсливы	S	Capsula Store Мукими	2025-02-16
+Штаны					Штаны	2XL	Capsula Store Максим Горький	2025-02-16
+Штаны					Штаны	2XL	Capsula Store Мукими	2025-02-16
+Штаны	320000	24.43	170000	1	Штаны	XL	Capsula Store Максим Горький	2025-02-16
+Штаны	320000	24.43	170000	1	Штаны	XL	Capsula Store Максим Горький	2025-02-16
+Штаны	320000	24.43	170000	1	Штаны	XL	Capsula Store Мукими	2025-02-16
+Штаны	320000	24.43	170000	1	Штаны	XL	Capsula Store Мукими	2025-02-16
+Носки	35000	2.67		1310	Носки	One Size	Capsula Store Максим Горький	2025-02-16
+Носки	35000	2.67		1459	Носки	One Size	Capsula Store Мукими	2025-02-16
+SB DUNK "GREY"					Кроссовки	40	Capsula Store Максим Горький	2025-02-16
+SB DUNK "GREY"					Кроссовки	40	Capsula Store Мукими	2025-02-16
+NB 2002R					Кроссовки	43	Capsula Store Максим Горький	2025-02-16
+NB 2002R					Кроссовки	43	Capsula Store Мукими	2025-02-16
+FORCE 1 "STUSSY"	665000	50.76			Кроссовки	45	Capsula Store Максим Горький	2025-02-16
+FORCE 1 "STUSSY"	665000	50.76		2	Кроссовки	45	Capsula Store Мукими	2025-02-16
+Носки	30000	2.29		67	Носки	One Size	Capsula Store Максим Горький	2025-02-16
+Носки	30000	2.29		25	Носки	One Size	Capsula Store Мукими	2025-02-16
+Футболка					Футболка	XL	Capsula Store Максим Горький	2025-02-16
+Футболка					Футболка	XL	Capsula Store Максим Горький	2025-02-16
+Футболка					Футболка	XL	Capsula Store Мукими	2025-02-16
+Футболка					Футболка	XL	Capsula Store Мукими	2025-02-16
+JORDAN 1 LOW	560000	42.75		2	Кроссовки	38	Capsula Store Максим Горький	2025-02-16
+JORDAN 1 LOW	560000	42.75		1	Кроссовки	38	Capsula Store Мукими	2025-02-16
+AIR FORCE 1	560000	42.75		1	Кроссовки	45	Capsula Store Максим Горький	2025-02-16
+AIR FORCE 1	560000	42.75		1	Кроссовки	45	Capsula Store Мукими	2025-02-16
+CAMPUS "KORN"	695000	53.05			Кроссовки	42	Capsula Store Максим Горький	2025-02-16
+CAMPUS "KORN"	695000	53.05		1	Кроссовки	42	Capsula Store Мукими	2025-02-16
