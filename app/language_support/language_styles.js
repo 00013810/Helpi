@@ -1,3 +1,4 @@
+// language styles logic
 import {StyleSheet } from 'react-native';
 
 const language_styles = StyleSheet.create({

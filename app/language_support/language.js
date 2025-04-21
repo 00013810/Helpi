@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useLanguage } from './LanguageContext'
 import language_styles from './language_styles'
 
@@ -16,6 +16,10 @@ const LanguagePage = () => {
 
       <TouchableOpacity style={language_styles.button} onPress={() => setLanguage('en')}>
         <Text style={language_styles.buttonText}>English</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={language_styles.button} onPress={() => setLanguage('uz')}>
+        <Text style={language_styles.buttonText}>Uzbek</Text>
       </TouchableOpacity>
     </View>
   );

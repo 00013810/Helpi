@@ -1,25 +1,30 @@
-import React from 'react';
+// necessary imports for logic
+import React, {lazy, Suspense} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { LanguageProvider } from './language_support/LanguageContext';
 
-// Import screen components +
-import LoginPage from './login/login'
-import HomePage from './home/home'
-import PredictionPage from './predictions/prediction'
-import SettingPage from './settings/settings'
-import RegisterPage from './register/register'
-import Resetpage from './reset/reset'
-import NotificationPage from './settings/notification'
-import SmsPage from './settings/smspage'
-import MonetizationPage from './monetization/monetization'
-import LogoutPage from '../app/settings/logout'
-import LanguagePage from '../app/language_support/language'
-import { LanguageProvider } from './language_support/LanguageContext'
 
+// dynamic logic for pages
+const LoginPage = lazy(() => import('./login/login'));
+const HomePage = lazy(() => import('./home/home'));
+const PredictionPage = lazy(() => import('./predictions/prediction'));
+const SettingPage = lazy(() => import('./settings/settings'));
+const RegisterPage = lazy(() => import('./register/register'));
+const Resetpage = lazy(() => import('./reset/reset'));
+const NotificationPage = lazy(() => import('./settings/notification'));
+const SmsPage = lazy(() => import('./settings/smspage'));
+const MonetizationPage = lazy(() => import('./monetization/monetization'));
+const LogoutPage = lazy(() => import('../app/settings/logout'));
+const LanguagePage = lazy(() => import('../app/language_support/language'));
+
+
+// Stack initiation
 const Stack = createStackNavigator();
 
 const RootLayout = () => {
   return (
     <LanguageProvider>
+      <Suspense fallback={<></>}>
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{ headerShown: false }} 
@@ -37,6 +42,7 @@ const RootLayout = () => {
         <Stack.Screen name="Language" component={LanguagePage} />
 
       </Stack.Navigator>
+      </Suspense>
       </LanguageProvider>
   );
 }

@@ -1,3 +1,4 @@
+// login styles logic
 import { StyleSheet } from 'react-native';
 
 const login_styles = StyleSheet.create({

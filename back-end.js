@@ -32,6 +32,7 @@ app.post('/create-checkout-session', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+  
 
 app.get("/", (req, res) => {
     res.json({ message: "Stripe backend" });

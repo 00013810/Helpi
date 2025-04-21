@@ -1,3 +1,4 @@
+// home styles logic
 import { StyleSheet } from 'react-native';
 
 const home_styles = StyleSheet.create({

@@ -1,3 +1,4 @@
+// necessary imports for monetization page
 import { StyleSheet } from "react-native";
 
 const monetization_styles = StyleSheet.create({

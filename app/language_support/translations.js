@@ -1,3 +1,5 @@
+// translation values for pages 
+// english values
 const translations = {
   en: {
     settings: "Settings",
@@ -15,6 +17,7 @@ const translations = {
     login_text: "Please login to continue.",
     register_option: "Don’t have an account?"
   },
+  // russian values
   ru: {
     settings: "Настройки",
     notification: "Настройки уведомлений",
@@ -31,6 +34,7 @@ const translations = {
     login_text: "Пожалуйста, войдите, чтобы продолжить.",
     register_option: "У вас нет аккаунта?"
   },
+  // uzbek values
   uz: {
     settings: "Sozlamalar",
     notification: "Bildirishnoma sozlamalari",
