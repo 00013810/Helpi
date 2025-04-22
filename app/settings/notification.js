@@ -19,7 +19,7 @@ const NotificationPage = () => {
 
   const handleFetchProducts = async () => {
     try {
-      const response = await fetch("http://192.168.68.107:5000/fetch-products");
+      const response = await fetch("http://192.168.68.107:3000/fetch-products");
       const data = await response.json();
       if (response.ok) {
         const { data: productData } = data;

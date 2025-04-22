@@ -66,7 +66,7 @@ app.get("/fetch-products", (_, res) => {
 
 // Start
 app.listen(port, () => {
-  console.log(`Server http://localhost:${port}`);
+  console.log(`Server http://192.168.68.107:${port}`);
   fetchProducts();
   setInterval(fetchProducts, 10 * 60 * 1000);
 });

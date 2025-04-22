@@ -4,10 +4,9 @@ const path = require("path");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5001;
+const PORT = 5000;
 const diskList = ['C:', 'D:', 'E:']
-const modelsPath = `${diskList[0]}\\MariyaMarkova_sw\\inventory\\app\\predictions\\models`;
-//C:\Helpi\inventory\app\predictions\models
+const modelsPath = `${diskList[0]}\\HELPI\\inventory\\app\\predictions\\models`;
 
 app.use(cors());
 

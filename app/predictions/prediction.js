@@ -15,7 +15,7 @@ const PredictionPage = ({ navigation }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://192.168.68.107:5001/get-predictions")
+    fetch("http://192.168.68.107:5000/get-predictions")
       .then((response) => response.json())
       .then((data) => {
         setPredictions(data);

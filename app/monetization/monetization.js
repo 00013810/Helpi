@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import monetization_styles from "./monetization_styles";
 import { handleSubscribe } from "./handleSubscribe";
-import {handleCancel} from './handleCancel'
 
 const MonetizationPage = () => {
   return (
@@ -27,7 +26,6 @@ const MonetizationPage = () => {
         {/* Cancel Subscription Button for Basic */}
         <TouchableOpacity
           style={[monetization_styles.button, { backgroundColor: 'crimson', marginTop: 10 }]}
-          onPress={() => handleCancel(subscriptionIdBasicId)}
         >
           <Text style={monetization_styles.buttonText}>Cancel Subscription</Text>
         </TouchableOpacity>
@@ -53,7 +51,6 @@ const MonetizationPage = () => {
       {/* Cancel Subscription Button */}
       <TouchableOpacity
         style={[monetization_styles.button, { backgroundColor: 'crimson', marginTop: 10 }]}
-        onPress={() => handleCancel()}
       >
         <Text style={monetization_styles.buttonText}>Cancel Subscription</Text>
       </TouchableOpacity>
