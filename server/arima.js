@@ -1,61 +1,69 @@
+// Import necessary packages
 const fs = require("fs");
 const path = require("path");
-const csv = require("csv-parser");
 const ARIMA = require("arima");
 
-// Paths
+// Set input and output folders
 const inputFolder = "C:\\Helpi\\inventory\\app\\predictions\\files";
 const outputFolder = "C:\\Helpi\\inventory\\app\\predictions\\models";
 
-// Data store
+// We'll save all inventory data here
 let inventoryData = {};
-// Parse all .txt files and populate inventoryData
+
+// Read all inventory .txt files
 function loadInventoryData() {
   return new Promise((resolve) => {
-    const files = fs.readdirSync(inputFolder).filter(f => f.endsWith(".txt"));
-    let processedFiles = 0;
+    try {
+      const files = fs.readdirSync(inputFolder);
+      files.forEach(file => {
+        const filePath = path.join(inputFolder, file);
+        const content = fs.readFileSync(filePath, "utf-8");
+        const lines = content.split("\n");
 
-    files.forEach((file) => {
-      fs.createReadStream(path.join(inputFolder, file))
-        .pipe(csv({ separator: "\t" }))
-        .on("data", (row) => {
-          const qty = parseInt(row.Qty, 10);
-          const date = new Date(row.LastCheckedDate);
-          const month = date.getMonth() + 1;
-          const key = `${row.Name}_${row.Size}`;
+        // Skip the header row (i=0)
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          if (!line) continue; // skip empty lines
+
+          const parts = line.split("\t"); // split by tab
+          const name = parts[0];
+          const size = parts[1];
+          const qtyStr = parts[2];
+
+          // parse qty into integer type
+          const qty = parseInt(qtyStr, 10);
+
+          // creation of unique product as T-Shirt_M 
+          const key = `${name}_${size}`;
 
           if (!isNaN(qty)) {
             if (!inventoryData[key]) {
-              inventoryData[key] = { months: [], quantities: [] };
+              inventoryData[key] = [];
             }
-            inventoryData[key].months.push(month);
-            inventoryData[key].quantities.push(qty);
+            // add qty to product
+            inventoryData[key].push(qty);
           }
-        })
-        .on("end", () => {
-          processedFiles++;
-          if (processedFiles === files.length) {
-            resolve();
-          }
-        });
-    });
+        }
+      });
 
-    if (files.length === 0) resolve();
+      // finish program
+      resolve();
+    } catch (error) {
+      console.log("Resolve error: " + error)
+    }
   });
 }
 
-// Predict next month's inventory and return results
-function generatePredictions() {
+// Predict future inventory
+function predictInventory() {
   const results = [];
-  const nextMonth = new Date().getMonth() + 2;
-
-  console.log("\nInventory Predictions:\n");
 
   for (const key in inventoryData) {
-    const { quantities } = inventoryData[key];
+    const quantities = inventoryData[key];
 
+    // quantity is less than 3
     if (quantities.length < 3) {
-      console.log(`Item: ${key.replace(/_/g, " ")} | Not enough data`);
+      console.log(`Not enough data for: ${key}`);
       continue;
     }
 
@@ -85,27 +93,32 @@ function generatePredictions() {
   return results;
 }
 
-// Save predictions to .txt file
+// Save output to a file
 function savePredictions(predictions) {
-  const today = new Date();
-  const fileName = `predictions_${today.toISOString().slice(0, 10).replace(/-/g, ".")}.txt`;
-  const filePath = path.join(outputFolder, fileName);
+  const date = new Date().toISOString().slice(0, 10).replace(/-/g, ".");
+  const filename = `${date}.txt`;
+  const filepath = path.join(outputFolder, filename);
 
   const header = "Item\tPredicted Quantity\tAccuracy (%)";
   const rows = predictions.map(p => `${p.item}\t${p.predictedQty}\t${p.accuracy}`);
   const content = [header, ...rows].join("\n");
 
-  fs.writeFileSync(filePath, content, "utf-8");
-  console.log(`\nPredictions saved to: ${filePath}`);
+  fs.writeFileSync(filepath, content);
+  console.log(`Predictions saved: ${filepath}`);
 }
 
-// Main function
+// Main program + 
 async function main() {
-  console.log("Starting Inventory Prediction...");
+  console.log("Loading inventory data...");
   await loadInventoryData();
-  const predictions = generatePredictions();
+
+  console.log("Predicting inventory...");
+  const predictions = predictInventory();
+
+  console.log("Saving predictions...");
   savePredictions(predictions);
-  console.log("Done.\n");
+
+  console.log("Done!");
 }
 
 main();

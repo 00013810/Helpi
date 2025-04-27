@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-} from "react-native";
+import {View,Text,ActivityIndicator,FlatList,ScrollView} from "react-native";
+import prediction_styles from './prediction_styles'
 
 const PredictionPage = ({ navigation }) => {
   const [predictions, setPredictions] = useState([]);
@@ -15,7 +8,7 @@ const PredictionPage = ({ navigation }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://192.168.68.107:5000/get-predictions")
+    fetch("http://192.168.73.122:5001/get-predictions")
       .then((response) => response.json())
       .then((data) => {
         setPredictions(data);
@@ -28,27 +21,27 @@ const PredictionPage = ({ navigation }) => {
   }, []);
 
   if (loading) {
-    return <ActivityIndicator size="large" color="blue" style={styles.loader} />;
+    return <ActivityIndicator size="large" color="blue" style={prediction_styles.loader} />;
   }
 
   if (error) {
-    return <Text style={styles.error}>{error}</Text>;
+    return <Text style={prediction_styles.error}>{error}</Text>;
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Inventory Predictions</Text>
-      <ScrollView horizontal style={styles.tableContainer}>
-        <View style={styles.table}>
-          <View style={styles.tableHeader}>
-            <View style={styles.headerCell}>
-              <Text style={styles.headerText}>Product</Text>
+    <View style={prediction_styles.container}>
+      <Text style={prediction_styles.title}>Inventory Predictions</Text>
+      <ScrollView horizontal style={prediction_styles.tableContainer}>
+        <View style={prediction_styles.table}>
+          <View style={prediction_styles.tableHeader}>
+            <View style={prediction_styles.headerCell}>
+              <Text style={prediction_styles.headerText}>Product</Text>
             </View>
-            <View style={styles.headerCell}>
-              <Text style={styles.headerText}>Number</Text>
+            <View style={prediction_styles.headerCell}>
+              <Text style={prediction_styles.headerText}>Number</Text>
             </View>
-            <View style={styles.headerCell}>
-              <Text style={styles.headerText}>Accuracy</Text>
+            <View style={prediction_styles.headerCell}>
+              <Text style={prediction_styles.headerText}>Accuracy</Text>
             </View>
           </View>
 
@@ -58,18 +51,18 @@ const PredictionPage = ({ navigation }) => {
             renderItem={({ item, index }) => (
               <View
                 style={[
-                  styles.row,
-                  index % 2 === 0 ? styles.rowEven : styles.rowOdd,
+                  prediction_styles.row,
+                  index % 2 === 0 ? prediction_styles.rowEven : prediction_styles.rowOdd,
                 ]}
               >
-                <View style={styles.cell}>
-                  <Text style={styles.cellText}>{item.name}</Text>
+                <View style={prediction_styles.cell}>
+                  <Text style={prediction_styles.cellText}>{item.name}</Text>
                 </View>
-                <View style={styles.cell}>
-                  <Text style={styles.cellText}>{item.predictedQty}</Text>
+                <View style={prediction_styles.cell}>
+                  <Text style={prediction_styles.cellText}>{item.predictedQty}</Text>
                 </View>
-                <View style={styles.cell}>
-                  <Text style={styles.cellText}>{item.accuracy}%</Text>
+                <View style={prediction_styles.cell}>
+                  <Text style={prediction_styles.cellText}>{item.accuracy}%</Text>
                 </View>
               </View>
             )}
@@ -79,84 +72,6 @@ const PredictionPage = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#f9f9f9",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#333",
-  },
-  tableContainer: {
-    marginTop: 10,
-    width: "100%",
-  },
-  table: {
-    flexDirection: "column",
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 10,
-  },
-  tableHeader: {
-    flexDirection: "row",
-    backgroundColor: "#e0e0e0",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
-  },
-  headerCell: {
-    padding: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRightWidth: 1,
-    borderRightColor: "#ddd",
-    width: 150,
-  },
-  headerText: {
-    fontWeight: "bold",
-    fontSize: 13,
-    color: "#333",
-    textAlign: "center",
-  },
-  row: {
-    flexDirection: "row",
-    paddingVertical: 8,
-    alignItems: "center",
-  },
-  rowEven: {
-    backgroundColor: "#fff",
-  },
-  rowOdd: {
-    backgroundColor: "#f1f1f1",
-  },
-  cell: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 150,
-    borderRightWidth: 1,
-    borderRightColor: "#ddd",
-  },
-  cellText: {
-    fontSize: 12,
-    color: "#555",
-    textAlign: "center",
-  },
-  loader: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  error: {
-    color: "red",
-    fontSize: 18,
-    textAlign: "center",
-    marginTop: 20,
-  },
-});
 
 export default PredictionPage;
 

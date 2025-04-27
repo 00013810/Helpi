@@ -1,20 +1,23 @@
-// Import the functions you need from the SDKs you need - comes from firebase console + 
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBwv8vriRmWmeGRXHoAwcVJuADB0Cm4O5w",
-  authDomain: "fir-authentication-98ea2.firebaseapp.com",
-  projectId: "fir-authentication-98ea2",
-  storageBucket: "fir-authentication-98ea2.firebasestorage.app",
-  messagingSenderId: "491730494050",
-  appId: "1:491730494050:web:d472a59b85490ce5ea273b"
+  apiKey: "AIzaSyAbgYuPlFPBuVbH_M5ipTx2pVPjGfFhW1g",
+  authDomain: "fir-authemailusers.firebaseapp.com",
+  projectId: "fir-authemailusers",
+  storageBucket: "fir-authemailusers.firebasestorage.app",
+  messagingSenderId: "243507944021",
+  appId: "1:243507944021:web:1e089c4ae499afeba252dc",
+  measurementId: "G-F9B0E6K5FE"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 
 export {auth};

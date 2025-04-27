@@ -1,5 +1,5 @@
-// necessary imports for logic
-import React, {lazy, Suspense} from 'react';
+// necessary imports for logic +
+import React, {lazy, Suspense, useEffect} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LanguageProvider } from './language_support/LanguageContext';
 
@@ -40,7 +40,6 @@ const RootLayout = () => {
         <Stack.Screen name="Monetization" component={MonetizationPage} />
         <Stack.Screen name="Logout" component={LogoutPage} />
         <Stack.Screen name="Language" component={LanguagePage} />
-
       </Stack.Navigator>
       </Suspense>
       </LanguageProvider>

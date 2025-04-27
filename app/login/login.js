@@ -4,7 +4,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import login_styles from "./login_styles";
-//
+
 
 const LoginPage = ({ navigation }) => {
   const [email, setEmail] = useState("");

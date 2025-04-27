@@ -62,27 +62,34 @@ const RegisterPage = ({ navigation }) => {
     }
   
     // New validation for userRole and companyName BEFORE registration
-    if ((userRole !== 'Retailer' && userRole !== 'Warehouse Manager') || companyName !== 'Capsula') {
-      Alert.alert('Registration Failed!', 'Invalid user role or company name.');
+    if ((userRole !== 'Retailer' && userRole !== 'Warehouse Manager')) {
+      Alert.alert('Registration Failed!', 'Only Retailers or Warehouse Managers are allowed.');
       return;
     }
-  
+    // validation for registering new client
+   
     // Start loading
     setIsLoading(true);
   
     // Create user in Firebase Authentication
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        Alert.alert('Registration Successful!', `Welcome, ${user.email}`);
-        navigation.navigate('Home');
-      })
-      .catch((error) => {
-        Alert.alert('Registration Failed!', error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  .then((userCredential) => {
+    const user = userCredential.user;
+    Alert.alert('Registration Successful!', `Welcome, ${user.email}`);
+
+    if ((userRole == 'Retailer' || userRole == 'Warehouse Manager') && companyName == 'Capsula') {
+      navigation.navigate('Home');
+    } else {
+      Alert.alert('Registration Restricted', 'Only Retailers or Warehouse Managers from Capsula are allowed.');
+    }
+  })
+  .catch((error) => {
+    Alert.alert('Registration Failed!', error.message);
+  })
+  .finally(() => {
+    setIsLoading(false);
+  });
+
   };
   
 
@@ -104,7 +111,7 @@ const RegisterPage = ({ navigation }) => {
       <View style={register_styles.inputWrapper}>
           <MaterialIcons name="supervised-user-circle" size={20} color="#9d9d9d" style={register_styles.icon} />
           <TextInput
-            placeholder="User Role"
+            placeholder="Role: Retailer, Warehouse Manager"
             value={userRole}
             onChangeText={setUserRole}
             style={register_styles.textInput}

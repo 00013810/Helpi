@@ -18,7 +18,7 @@ const MonetizationPage = () => {
         </View>
         <TouchableOpacity 
           style={monetization_styles.button} 
-          onPress={() => handleSubscribe()}
+          onPress={() => handleSubscribe("price_1R8MarGH3WN9fBw2X91UozcT")}
         >
           <Text style={monetization_styles.buttonText}>Subscribe</Text>
         </TouchableOpacity>

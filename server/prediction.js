@@ -4,7 +4,7 @@ const path = require("path");
 const cors = require("cors");
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 const diskList = ['C:', 'D:', 'E:']
 const modelsPath = `${diskList[0]}\\HELPI\\inventory\\app\\predictions\\models`;
 
@@ -43,5 +43,5 @@ app.get("/get-predictions", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://192.168.68.107:${PORT}`);
 });

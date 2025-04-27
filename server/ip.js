@@ -7,7 +7,7 @@ dotenv.config();
 
 // variable creation
 let previousIP = null;
-const selectedElemetFromPage = ".ip-address #ipv4 a";
+const selectedElemetFromPage = ".ip-address #ipv4";
 const timeInterval = 10 * 60 * 1000;
 
 // function logic for launching browser

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const SECRET_KEY = process.env.SECRET_KEY;
 let cachedData = null;
@@ -66,7 +66,7 @@ app.get("/fetch-products", (_, res) => {
 
 // Start
 app.listen(port, () => {
-  console.log(`Server http://192.168.68.107:${port}`);
+  console.log(`Server http://192.168.73.122:${port}`);
   fetchProducts();
   setInterval(fetchProducts, 10 * 60 * 1000);
 });

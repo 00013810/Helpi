@@ -1,6 +1,9 @@
 // home styles logic
 import { StyleSheet } from 'react-native';
 
+// backgroud color -> white
+// all elements should be in center
+// welcome text design
 const home_styles = StyleSheet.create({
     container: {
       flex: 1,
